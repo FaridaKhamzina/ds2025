@@ -24,13 +24,9 @@
 
 **Проблемы в исходных данных:**
 
-```sql
--- В таблице transactions были частичные зависимости:
-transaction_id (PK) → transaction_date, online_order, order_status, list_price
-product_id → brand, product_line, product_class, product_size, standard_cost
-```
-
-Атрибуты продукта (`brand`, `product_line`, `product_class`, `product_size`, `standard_cost`) зависели только от `product_id`, а не от всего первичного ключа `transaction_id`
+Одни данные зависели от номера транзакции, а другие - только от товара.
+Информация о самой транзакции (дата, статус, цена продажи) - разная для каждой строки
+Информация о товаре (бренд, категория, себестоимость) - одинаковая для одного и того же товара, независимо от того, в какой транзакции он участвует
 
 **Решение для приведения к 2НФ:**
 - Выделена таблица `products` с первичным ключом `product_id`

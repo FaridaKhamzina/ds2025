@@ -1,0 +1,78 @@
+# Нормализация базы данных до 3НФ
+
+## Исходные данные
+
+- **`transactions.csv`** - данные о транзакциях, продуктах и повторяющиеся атрибуты продуктов
+- **`customers.csv`** - данные о клиентах
+
+## Процесс нормализации
+
+### 1. Первая нормальная форма (1НФ)
+
+**Требования 1НФ:**
+- Все значения атомарны
+- Нет повторяющихся групп данных
+
+**Вывод:** Исходные данные соответствовали 1НФ
+
+### 2. Вторая нормальная форма (2НФ)
+
+**Требования 2НФ:**
+- Соответствие 1НФ
+- Все неключевые атрибуты зависят от всего первичного ключа
+- Нет частичных зависимостей
+
+**Проблемы в исходных данных:**
+
+```sql
+-- В таблице transactions были частичные зависимости:
+transaction_id (PK) → transaction_date, online_order, order_status, list_price
+product_id → brand, product_line, product_class, product_size, standard_cost
+```
+
+Атрибуты продукта (`brand`, `product_line`, `product_class`, `product_size`, `standard_cost`) зависели только от `product_id`, а не от всего первичного ключа `transaction_id`
+
+**Решение для приведения к 2НФ:**
+- Выделена таблица `products` с первичным ключом `product_id`
+- В таблице `transactions` остались только ссылки на продукты через внешний ключ
+
+### 3. Третья нормальная форма (3НФ)
+
+**Выявленные транзитивные зависимости:**
+
+#### В таблице `customers`:
+- **`postcode → state → country`** - строгая транзитивная зависимость
+- **Повторяющиеся значения `job_industry_category`** - потенциальная зависимость
+
+#### В таблице `products`:
+- **Повторяющиеся значения `brand`** - потенциальная зависимость  
+- **`product_line → product_class`** - потенциальная транзитивная зависимость
+
+**Решение для устранения транзитивных зависимостей:**
+
+```sql
+-- Созданы справочные таблицы
+CREATE TABLE countries (...);
+CREATE TABLE states (...);
+CREATE TABLE postcodes (...);
+CREATE TABLE industry_categories (...);
+CREATE TABLE brands (...);
+CREATE TABLE product_categories (...);
+```
+
+## Итоговая структура БД
+
+```
+countries (1) ← states (1) ← postcodes (1) ← customers (Many)
+industry_categories (1) ← customers (Many)
+brands (1) ← products (Many)
+product_categories (1) ← products (Many)  
+products (1) ← transactions (Many) → customers (1)
+```
+
+## Таблицы после нормализации
+
+| Группа | Таблицы |
+|--------|---------|
+| **Справочники** | `countries`, `states`, `postcodes`, `industry_categories`, `brands`, `product_categories` |
+| **Основные** | `customers`, `products`, `transactions` |

@@ -5,13 +5,4 @@
 📓 **Jupyter Notebook с нормализацией и созданием таблиц:**  
 [Хамзина_Фарида.ipynb](https://github.com/FaridaKhamzina/ds2025/blob/main/%D0%A5%D0%B0%D0%BC%D0%B7%D0%B8%D0%BD%D0%B0_%D0%A4%D0%B0%D1%80%D0%B8%D0%B4%D0%B0.ipynb)
 
-### 📊 Скриншоты из DBeaver с данными
-
-![Скриншот анализа 1]([https://github.com/FaridaKhamzina/ds2025/raw/main/screenshots/analysis1.png](https://github.com/FaridaKhamzina/ds2025/blob/main/brands.png))  
-*Описание первого скриншота с ключевыми метриками*
-
-![Скриншот анализа 2](https://github.com/FaridaKhamzina/ds2025/raw/main/screenshots/analysis2.png)  
-*Описание второго скриншота с визуализациями*
-
-![Скриншот анализа 3](https://github.com/FaridaKhamzina/ds2025/raw/main/screenshots/analysis3.png)  
-*Описание третьего скриншота с выводом*
+### 📊 Скриншоты из DBeaver с данными в репозитории (по названию таблицы)

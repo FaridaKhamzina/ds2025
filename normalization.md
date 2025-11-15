@@ -48,28 +48,6 @@ product_id → brand, product_line, product_class, product_size, standard_cost
 - **Повторяющиеся значения `brand`** - потенциальная зависимость  
 - **`product_line → product_class`** - потенциальная транзитивная зависимость
 
-**Решение для устранения транзитивных зависимостей:**
-
-```sql
--- Созданы справочные таблицы
-CREATE TABLE countries (...);
-CREATE TABLE states (...);
-CREATE TABLE postcodes (...);
-CREATE TABLE industry_categories (...);
-CREATE TABLE brands (...);
-CREATE TABLE product_categories (...);
-```
-
-## Итоговая структура БД
-
-```
-countries (1) ← states (1) ← postcodes (1) ← customers (Many)
-industry_categories (1) ← customers (Many)
-brands (1) ← products (Many)
-product_categories (1) ← products (Many)  
-products (1) ← transactions (Many) → customers (1)
-```
-
 ## Таблицы после нормализации
 
 | Группа | Таблицы |

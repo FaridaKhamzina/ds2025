@@ -7,7 +7,7 @@
 
 ### 📊 Скриншоты из DBeaver с данными
 
-![Скриншот анализа 1](https://github.com/FaridaKhamzina/ds2025/raw/main/screenshots/analysis1.png)  
+![Скриншот анализа 1]([https://github.com/FaridaKhamzina/ds2025/raw/main/screenshots/analysis1.png](https://github.com/FaridaKhamzina/ds2025/blob/main/brands.png))  
 *Описание первого скриншота с ключевыми метриками*
 
 ![Скриншот анализа 2](https://github.com/FaridaKhamzina/ds2025/raw/main/screenshots/analysis2.png)  

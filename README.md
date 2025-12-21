@@ -26,4 +26,5 @@
 
 # Домашнее задание 6. Автоматизация расчетов с помощью Apache AirFlow
 [Скрипт](https://github.com/FaridaKhamzina/ds2025/blob/main/hw06_khamzinafarida.py)
-[Скриншот об успешном выполнении](
+
+[Скриншот об успешном выполнении](https://github.com/FaridaKhamzina/ds2025/blob/main/HW06.png)
